@@ -10,7 +10,7 @@ $("#divfrmModTienda").dialog({
     modal: "yes",
     resizable:false,
     buttons: [{
-        text: "Añadir",
+        text: "Modificar",
         click: procesoModTienda
     },/*{
         text: "Modificar",
@@ -77,26 +77,26 @@ function validarModTienda(){
 	var bValido = true;
 
   var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
-  if(expreTitulo.test(frmGestionTienda.txtNombre.value) == false){
+  if(expreTitulo.test(frmModTienda.txtNombre.value) == false){
     bValido = false;
-    alert(frmGestionTienda.txtNombre.value);
+    alert(frmModTienda.txtNombre.value);
     sError+= "Campo Nombre requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
   var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
-  if(expreTitulo.test(frmGestionTienda.txtPais.value) == false){
+  if(expreTitulo.test(frmModTienda.txtPais.value) == false){
     bValido = false;
     sError+= "Campo pais requiere de un precio mínimo de 1. ";
   }
 
   var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
-  if(expreTitulo.test(frmGestionTienda.txtProvincia.value) == false){
+  if(expreTitulo.test(frmModTienda.txtProvincia.value) == false){
     bValido = false;
     sError+= "Campo Provincia requiere de un precio mínimo de 1. ";
   }
 
   var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
-  if(expreTitulo.test(frmGestionTienda.txtDireccion.value) == false){
+  if(expreTitulo.test(frmModTienda.txtDireccion.value) == false){
     bValido = false;
     sError+= "Campo direccion requiere de un precio mínimo de 1. ";
   }
@@ -110,13 +110,14 @@ function validarModTienda(){
 
 // Llamada ajax y tratamiento respuesta
 function llamadaAjaxModTienda(){
-
+  alert(frmModTienda.lstTiendaT.value);
 	//Creo un objeto literal Tienda
 	var oTienda = {
-           Nombre     : frmGestionTienda.txtNombre.value,
-           Pais       : frmGestionTienda.txtPais.value,
-           Provincia  : frmGestionTienda.txtProvincia.value ,
-				   Direccion  : frmGestionTienda.txtDireccion.value
+           idTiendas  : frmModTienda.lstTiendaT.value,
+           Nombre     : frmModTienda.txtNombre.value,
+           Pais       : frmModTienda.txtPais.value,
+           Provincia  : frmModTienda.txtProvincia.value ,
+				   Direccion  : frmModTienda.txtDireccion.value
 				 };
 
 	// Formateo de parametro POST
@@ -126,7 +127,7 @@ function llamadaAjaxModTienda(){
 	sParametroPOST = encodeURI(sParametroPOST);
 
 	// Script de envio
-	var sURL = encodeURI("php/altaTienda.php");
+	var sURL = encodeURI("php/ModTienda.php");
 
 	AjaxTienda(sURL,sParametroPOST);
 }
@@ -159,7 +160,7 @@ function respuestaModTienda(){
 		}
     else {
 			alert(oArrayRespuesta[1]);
-			$("#divfrmGestionTienda").dialog("close");
+			$("#divfrmModTienda").dialog("close");
 
 		}
 	}
