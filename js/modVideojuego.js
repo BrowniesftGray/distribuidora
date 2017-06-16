@@ -22,6 +22,7 @@ $("#divfrmModVideojuego").dialog({
 
 cargarPlataformas();
 cargarDesarrolladoras();
+cargaVideojuegos();
 
 // Cargar listbox de plataformas
 function cargarPlataformas(){
@@ -95,6 +96,42 @@ function rellenaCombo2(oArrayDesarrolladoras){
 
 }
 
+// Cargar listbox de videojuegos
+function cargaVideojuegos(){
+	var oArrayVideojuegos = null;
+
+	// Existe en almacenamiento local
+	if(localStorage["videojuegos"] != null){
+		oArrayVideojuegos = JSON.parse(localStorage["videojuegos"]);
+
+		rellenaCombo3(oArrayVideojuegos);
+
+
+	} else {
+
+		$.get('php/getVideojuegos.php',null,tratarCargaVideojuegos,'json');
+	}
+}
+
+function tratarCargaVideojuegos(oArrayVideojuegos, sStatus, oXHR){
+
+		rellenaCombo3(oArrayVideojuegos);
+
+		// Guardar en localStorage
+		localStorage["videojuegos"] = JSON.stringify(oArrayVideojuegos);
+}
+
+function rellenaCombo3(oArrayVideojuegos){
+		$("#lstIdVideojuegoM").empty();
+
+		$.each(oArrayVideojuegos, function( i , elemento){
+
+			$('<option value="' + elemento.idVideojuegos + '" >' +  elemento.Titulo + '</option>').appendTo("#lstIdVideojuegoM");
+
+		});
+
+}
+
 function procesoModVideojuego(){
 
 	if (validarModVideojuego()){
@@ -135,10 +172,9 @@ function validarModVideojuego(){
 
 // Llamada ajax y tratamiento respuesta
 function llamadaAjaxModVideojuego(){
-
 	//Creo un objeto literal Videojuego
 	var oVideojuego = {
-           idVideojuego : frmModVideojuego.lstIdVideojuegoM.value,
+           idVideojuegos : frmModVideojuego.lstIdVideojuegoM.value,
            idDesarrolladoraFK : frmModVideojuego.lstDesarrolladoraM.value,
            Titulo : frmModVideojuego.txtTitulo.value,
            Plataforma : frmModVideojuego.lstPlataformaM.value ,
@@ -153,7 +189,7 @@ function llamadaAjaxModVideojuego(){
 	sParametroPOST = encodeURI(sParametroPOST);
 
 	// Script de envio
-	var sURL = encodeURI("php/altaVideojuego.php");
+	var sURL = encodeURI("php/ModVideojuego.php");
 
 	AjaxVideojuego(sURL,sParametroPOST);
 }
