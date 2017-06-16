@@ -25,18 +25,19 @@ $sql = "SELECT * FROM videojuegos";
 
 $resultados = mysql_query($sql, $conexion) or die(mysql_error());
 
-$respuesta="<?xml version='1.0' encoding='UTF-8'?><videojuegos>";
+$respuesta='<table id="listado" border="1">';
+$respuesta.='<tr><td>id de Videojuego</td><td>id de Desarrolladora</td><td>Titulo</td><td>Plataforma</td><td>FechaSalida</td><td>Precio</td></tr>';
 while($fila=mysql_fetch_assoc($resultados)){
-    $respuesta.="<videojuego>";
-        $respuesta.="<idVideojuego>".$fila['idVideojuegos']."</idVideojuego>";
-        $respuesta.="<idDesarrolladora>".$fila['idDesarrolladoraFK']."</idDesarrolladora>";
-        $respuesta.="<titulo>".$fila['Titulo']."</titulo>";
-        $respuesta.="<plataforma>".$fila['Plataforma']."</plataforma>";
-        $respuesta.="<fecha>".$fila['FechaSalida']."</fecha>";
-        $respuesta.="<precio>".$fila['Precio']."</precio>";
-    $respuesta.="</videojuego>";
+    $respuesta.="<tr>";
+        $respuesta.="<td>".$fila['idVideojuegos']."</td>";
+        $respuesta.="<td>".$fila['idDesarrolladoraFK']."</td>";
+        $respuesta.="<td>".$fila['Titulo']."</td>";
+        $respuesta.="<td>".$fila['Plataforma']."</td>";
+        $respuesta.="<td>".$fila['FechaSalida']."</td>";
+        $respuesta.="<td>".$fila['Precio']."</td>";
+    $respuesta.="</tr>";
 }
-$respuesta.="</videojuegos>";
+$respuesta.="</table>";
 echo $respuesta;
 
 mysql_close($conexion);
