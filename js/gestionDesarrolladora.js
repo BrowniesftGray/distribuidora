@@ -35,20 +35,22 @@ function validarAltaDesarrolladora(){
 	var bValido = true;
 
   var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
-  if(expreTitulo.test(frmModVideojuego.txtTitulo.value) == false){
+  if(expreTitulo.test(frmGestionDesarrolladora.txtPais.value) == false){
     bValido = false;
     sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
-  var expreTitulo = /^[1-9][0-9]{1,}$/;
-  if(expreTitulo.test(frmModVideojuego.txtPrecio.value) == false){
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{3,50}$/;
+  if(expreTitulo.test(frmGestionDesarrolladora.txtNombre.value) == false){
     bValido = false;
     sError+= "Campo Precio requiere de un precio mínimo de 1. ";
   }
-	if(frmModVideojuego.txtFechaSalida.value.length == 0){
-		sError+= "Campos fecha debe estar relleno";
-		bValido = false;
-	}
+
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
+  if(expreTitulo.test(frmGestionDesarrolladora.txtDireccion.value) == false){
+    bValido = false;
+    sError+= "Campo Precio requiere de un precio mínimo de 1. ";
+  }
 
 	if(bValido == false){
 		alert(sError); // A sustituir por el uso de un dialogo de mensajes
@@ -58,50 +60,48 @@ function validarAltaDesarrolladora(){
 }
 
 // Llamada ajax y tratamiento respuesta
-function llamadaAjaxAltaVideojuego(){
+function llamadaAjaxAltaDesarrolladora(){
 
-	//Creo un objeto literal Videojuego
-	var oVideojuego = {
-           idDesarrolladoraFK : frmGestionVideojuego.lstDesarrolladora.value,
-           Titulo : frmGestionVideojuego.txtTitulo.value,
-           Plataforma : frmGestionVideojuego.lstPlataforma.value ,
-				   FechaSalida : frmGestionVideojuego.txtFechaSalida.value,
-				   Precio : frmGestionVideojuego.txtPrecio.value.trim()
+	//Creo un objeto literal Desarrolladora
+	var oDesarrolladora = {
+            Nombre : frmGestionDesarrolladora.txtNombre.value,
+            Pais : frmGestionDesarrolladora.txtPais.value,
+            Direccion : frmGestionDesarrolladora.txtDireccion.value
 				 };
 
 	// Formateo de parametro POST
-	var sParametroPOST = "datos=" + JSON.stringify(oVideojuego);
+	var sParametroPOST = "datos=" + JSON.stringify(oDesarrolladora);
 
 	// Codifico para envio
 	sParametroPOST = encodeURI(sParametroPOST);
 
 	// Script de envio
-	var sURL = encodeURI("php/altaVideojuego.php");
+	var sURL = encodeURI("php/altaDesarrolladora.php");
 
-	AjaxVideojuego(sURL,sParametroPOST);
+	AjaxDesarrolladora(sURL,sParametroPOST);
 }
 
 
 /* LLAMADAS AJAX */
-function AjaxVideojuego(sURL,sParametroPOST){
+function AjaxDesarrolladora(sURL,sParametroPOST){
 
-	oAjaxAltaVideojuego = objetoXHR();
+	oAjaxAltaDesarrolladora = objetoXHR();
 
-	oAjaxAltaVideojuego.open("POST",sURL,true);
+	oAjaxAltaDesarrolladora.open("POST",sURL,true);
 
 	// Para peticiones con metodo POST
-    oAjaxAltaVideojuego.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    oAjaxAltaDesarrolladora.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-	oAjaxAltaVideojuego.onreadystatechange = respuestaAltaVideojuego;
+	oAjaxAltaDesarrolladora.onreadystatechange = respuestaAltaDesarrolladora;
 //	oAjaxAltaProp.addEventListener("readystatechange",respuestaAltaProp,false);
 
-	oAjaxAltaVideojuego.send(sParametroPOST);
+	oAjaxAltaDesarrolladora.send(sParametroPOST);
 }
 
-function respuestaAltaVideojuego(){
+function respuestaAltaDesarrolladora(){
 
-	if(oAjaxAltaVideojuego.readyState == 4 && oAjaxAltaVideojuego.status ==200)	{
-		var oArrayRespuesta = JSON.parse(oAjaxAltaVideojuego.responseText);
+	if(oAjaxAltaDesarrolladora.readyState == 4 && oAjaxAltaDesarrolladora.status ==200)	{
+		var oArrayRespuesta = JSON.parse(oAjaxAltaDesarrolladora.responseText);
 
 		if (oArrayRespuesta[0] == true){
 			alert(oArrayRespuesta[1]);
@@ -109,7 +109,7 @@ function respuestaAltaVideojuego(){
 		}
     else {
 			alert(oArrayRespuesta[1]);
-			$("#divfrmGestionVideojuego").dialog("close");
+			$("#divfrmGestionDesarrolladora").dialog("close");
 
 		}
 	}

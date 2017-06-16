@@ -13,7 +13,7 @@ $password  = "";
 
 $datos=$_REQUEST['datos'];
 
-$oDesarrolladora = json_decode($datos, true);
+$oDesarrolladora = json_decode($datos);
 
 
 // Abrir conexion con la BD

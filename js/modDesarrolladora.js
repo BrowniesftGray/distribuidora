@@ -73,20 +73,22 @@ function validarModDesarrolladora(){
 	var bValido = true;
 
   var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
-  if(expreTitulo.test(frmModDesarrolladora.txtTitulo.value) == false){
+  if(expreTitulo.test(frmModDesarrolladora.txtPais.value) == false){
     bValido = false;
     sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
-  var expreTitulo = /^[1-9][0-9]{1,}$/;
-  if(expreTitulo.test(frmModDesarrolladora.txtPrecio.value) == false){
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{3,50}$/;
+  if(expreTitulo.test(frmModDesarrolladora.txtNombre.value) == false){
     bValido = false;
     sError+= "Campo Precio requiere de un precio mínimo de 1. ";
   }
-	if(frmModDesarrolladora.txtFechaSalida.value.length == 0){
-		sError+= "Campos fecha debe estar relleno";
-		bValido = false;
-	}
+
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
+  if(expreTitulo.test(frmModDesarrolladora.txtDireccion.value) == false){
+    bValido = false;
+    sError+= "Campo Precio requiere de un precio mínimo de 1. ";
+  }
 
 	if(bValido == false){
 		alert(sError); // A sustituir por el uso de un dialogo de mensajes
@@ -99,12 +101,10 @@ function validarModDesarrolladora(){
 function llamadaAjaxModDesarrolladora(){
 	//Creo un objeto literal Desarrolladora
 	var oDesarrolladora = {
-           idDesarrolladoras : frmModDesarrolladora.lstIdDesarrolladoraM.value,
-           idDesarrolladoraFK : frmModDesarrolladora.lstDesarrolladoraM.value,
-           Titulo : frmModDesarrolladora.txtTitulo.value,
-           Plataforma : frmModDesarrolladora.lstPlataformaM.value ,
-				   FechaSalida : frmModDesarrolladora.txtFechaSalida.value,
-				   Precio : frmModDesarrolladora.txtPrecio.value.trim()
+           idDesarrolladoras : frmModDesarrolladora.lstDesarrolladoraD.value,
+           Nombre : frmModDesarrolladora.txtNombre.value,
+           Pais : frmModDesarrolladora.txtPais.value,
+           Direccion : frmModDesarrolladora.txtDireccion.value
 				 };
 
 	// Formateo de parametro POST
