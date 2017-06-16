@@ -6,19 +6,29 @@ $(document).ready(function(){
 
 	$("#mnuModVideojuego").click(cargaModVideojuego);
 
+	$("#mnuListadoVideojuego").click(cargaListadoVideojuego);
+
   $("#mnuAltaTienda").click(cargaAltaTienda);
 
 	$("#mnuModTienda").click(cargaModTienda);
+
+	$("#mnuListadoTienda").click(cargaListadoTienda);
 
   $("#mnuAltaDesarrolladora").click(cargaAltaDesarrolladora);
 
 	$("#mnuModDesarrolladora").click(cargaModDesarrolladora);
 
+	$("#mnuListadoDesarrolladora").click(cargaListadoDesarrolladora);
+
   $("#mnuAltaExistencia").click(cargaAltaExistencia);
+
+	//$("#mnuListadoExistencia").click(cargaListadoExistencia);
 
 	$("#mnuVenta").click(cargaAltaVenta);
 
 	$("#mnuCompra").click(cargaAltaCompra);
+
+	//$("#mnuListadoOperaciones").click(cargaListadoOperaciones);
 
 	$("#divMensajes").dialog( {
 		autoOpen:false,
