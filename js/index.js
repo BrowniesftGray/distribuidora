@@ -4,10 +4,15 @@ $(document).ready(function(){
 
 	$("#mnuAltaVideojuego").click(cargaAltaVideojuego);
 
+	$("#mnuModVideojuego").click(cargaModVideojuego);
 
   $("#mnuAltaTienda").click(cargaAltaTienda);
 
+	$("#mnuModTienda").click(cargaModTienda);
+
   $("#mnuAltaDesarrolladora").click(cargaAltaDesarrolladora);
+
+	$("#mnuModDesarrolladora").click(cargaModDesarrolladora);
 
   $("#mnuAltaExistencia").click(cargaAltaExistencia);
 
@@ -42,6 +47,23 @@ function cargaAltaVideojuego(){
   else {
 
 		$("#divfrmGestionVideojuego").dialog("open");
+
+	}
+}
+
+function cargaModVideojuego(){
+
+	if( $("#frmModVideojuego").size() == 0) {
+		$("#formularios").load("formularios/modVideojuego.html",
+    function(){
+						$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+						$.getScript("js/modVideojuego.js")
+              }
+					);
+	}
+  else {
+
+		$("#divfrmModVideojuego").dialog("open");
 
 	}
 }
@@ -94,6 +116,22 @@ function cargaAltaTienda(){
   }
 }
 
+function cargaModTienda(){
+
+  if( $("#frmModTienda").size() == 0) {
+    $("#formularios").load("formularios/modTienda.html",
+    function(){
+            $.getScript("js/modTienda.js")
+              }
+          );
+  }
+  else {
+
+    $("#divfrmModTienda").dialog("open");
+
+  }
+}
+
 function cargaAltaDesarrolladora(){
 
   if( $("#frmGestionDesarrolladora").size() == 0) {
@@ -106,6 +144,22 @@ function cargaAltaDesarrolladora(){
   else {
 
     $("#divfrmGestionDesarrolladora").dialog("open");
+
+  }
+}
+
+function cargaModDesarrolladora(){
+
+  if( $("#frmModDesarrolladora").size() == 0) {
+    $("#formularios").load("formularios/modDesarrolladora.html",
+    function(){
+            $.getScript("js/modDesarrolladora.js")
+              }
+          );
+  }
+  else {
+
+    $("#divfrmModDesarrolladora").dialog("open");
 
   }
 }

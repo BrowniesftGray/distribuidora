@@ -13,7 +13,7 @@ $password  = "";
 
 $datos=$_REQUEST['datos'];
 
-$oTienda = json_decode($datos, true);
+$oTienda = json_decode($datos);
 
 
 // Abrir conexion con la BD

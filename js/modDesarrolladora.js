@@ -1,7 +1,7 @@
-$("#divfrmGestionDesarrolladora").dialog({
+$("#divfrmModDesarrolladora").dialog({
     autoOpen: true,  // Es el valor por defecto
     close: function () {
-        $("#frmGestionDesarrolladora")[0].reset();
+        $("#frmModDesarrolladora")[0].reset();
     },
     hide: "fold",
     show: "fold",
@@ -10,24 +10,61 @@ $("#divfrmGestionDesarrolladora").dialog({
     modal: "yes",
     resizable:false,
     buttons: [{
-        text: "Añadir",
-        click: procesoAltaPaciente
+        text: "Modificar",
+        click: procesoModPaciente
     },{
         text: "Borrar",
         click: procesoBajaPaciente
     }]
 });
 
-function procesoAltaPaciente(){
-        var sNif = frmAltaPaciente.txtNIF.value.trim();
-        var sNombre = frmAltaPaciente.txtNombre.value.trim();
-        var sApellidos = frmAltaPaciente.txtApellidos.value.trim();
-        var sTelefono = frmAltaPaciente.txtTelefono.value.trim();
-        var dtFecha = frmAltaPaciente.txtFecha.value.trim();
-        var sDireccion = frmAltaPaciente.txtDireccion.value.trim();
-        var sLocalidad = frmAltaPaciente.txtLocalidad.value.trim();
-        var sProvincia = frmAltaPaciente.txtProvincia.value.trim();
-        var sSexo = frmAltaPaciente.txtSexo.value.trim();
+cargarDesarrolladoras();
+
+// Cargar listbox de desarrolladoras
+function cargarDesarrolladoras(){
+	var oArrayDesarrolladoras = null;
+
+	// Existe en almacenamiento local
+	if(localStorage["desarrolladoras"] != null){
+		oArrayDesarrolladoras = JSON.parse(localStorage["desarrolladoras"]);
+
+		rellenaCombo2(oArrayDesarrolladoras);
+
+
+	} else {
+
+		$.get('php/getDesarrolladoras.php',null,tratarCargaDesarrolladoras,'json');
+	}
+}
+
+function tratarCargaDesarrolladoras(oArrayDesarrolladoras, sStatus, oXHR){
+
+		rellenaCombo2(oArrayDesarrolladoras);
+
+		// Guardar en localStorage
+		localStorage["desarrolladoras"] = JSON.stringify(oArrayDesarrolladoras);
+}
+
+function rellenaCombo2(oArrayDesarrolladoras){
+		$("#lstDesarrolladoraD").empty();
+
+		$.each(oArrayDesarrolladoras, function( i , elemento){
+
+			$('<option value="' + elemento.idDesarrolladoras + '" >' +  elemento.Nombre + '</option>').appendTo("#lstDesarrolladoraD");
+
+		});
+
+}
+function procesoModPaciente(){
+        var sNif = frmModPaciente.txtNIF.value.trim();
+        var sNombre = frmModPaciente.txtNombre.value.trim();
+        var sApellidos = frmModPaciente.txtApellidos.value.trim();
+        var sTelefono = frmModPaciente.txtTelefono.value.trim();
+        var dtFecha = frmModPaciente.txtFecha.value.trim();
+        var sDireccion = frmModPaciente.txtDireccion.value.trim();
+        var sLocalidad = frmModPaciente.txtLocalidad.value.trim();
+        var sProvincia = frmModPaciente.txtProvincia.value.trim();
+        var sSexo = frmModPaciente.txtSexo.value.trim();
 
         var oPaciente={
                         dni: sNif,
@@ -55,15 +92,15 @@ function procesoAltaPaciente(){
 }
 
 function procesoModPaciente(){
-        var sNif = frmAltaPaciente.txtNIF.value.trim();
-        var sModelo = frmAltaPaciente.txtNombre.value.trim();
-        var sApellidos = frmAltaPaciente.txtApellidos.value.trim();
-        var sTelefono = frmAltaPaciente.txtTelefono.value.trim();
-        var dtFecha = frmAltaPaciente.txtFecha.value.trim();
-        var sDireccion = frmAltaPaciente.txtDireccion.value.trim();
-        var sLocalidad = frmAltaPaciente.txtLocalidad.value.trim();
-        var sProvincia = frmAltaPaciente.txtProvincia.value.trim();
-        var sSexo = frmAltaPaciente.txtSexo.value.trim();
+        var sNif = frmModPaciente.txtNIF.value.trim();
+        var sModelo = frmModPaciente.txtNombre.value.trim();
+        var sApellidos = frmModPaciente.txtApellidos.value.trim();
+        var sTelefono = frmModPaciente.txtTelefono.value.trim();
+        var dtFecha = frmModPaciente.txtFecha.value.trim();
+        var sDireccion = frmModPaciente.txtDireccion.value.trim();
+        var sLocalidad = frmModPaciente.txtLocalidad.value.trim();
+        var sProvincia = frmModPaciente.txtProvincia.value.trim();
+        var sSexo = frmModPaciente.txtSexo.value.trim();
 
         var oPaciente={
                         dni: sNif,
@@ -91,7 +128,7 @@ function procesoModPaciente(){
 }
 
 function procesoBajaPaciente(){
-        var sId = frmAltaPaciente.txtID.value.trim();
+        var sId = frmModPaciente.txtID.value.trim();
 
         var oPaciente={
                         idPaciente: sId

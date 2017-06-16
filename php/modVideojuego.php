@@ -13,7 +13,7 @@ $password  = "";
 
 $datos=$_REQUEST['datos'];
 
-$oVideojuego = json_decode($datos, true);
+$oVideojuego = json_decode($datos);
 
 
 // Abrir conexion con la BD

@@ -1,7 +1,7 @@
-$("#divfrmGestionVideojuego").dialog({
+$("#divfrmModVideojuego").dialog({
     autoOpen: true,  // Es el valor por defecto
     close: function () {
-        $("#frmGestionVideojuego")[0].reset();
+        $("#frmModVideojuego")[0].reset();
     },
     hide: "fold",
     show: "fold",
@@ -10,8 +10,8 @@ $("#divfrmGestionVideojuego").dialog({
     modal: "yes",
     resizable:false,
     buttons: [{
-        text: "Añadir",
-        click: procesoAltaVideojuego
+        text: "Modificar",
+        click: procesoModVideojuego
     },{
         text: "Cancelar",
         click: function() {
@@ -49,11 +49,11 @@ function tratarCargaPlataformas(oArrayPlataformas, sStatus, oXHR){
 }
 
 function rellenaCombo(oArrayPlataformas){
-		$("#lstPlataforma").empty();
+		$("#lstPlataformaM").empty();
 
 		$.each(oArrayPlataformas, function( i , elemento){
 
-			$('<option value="' + elemento.plataforma + '" >' +  elemento.plataforma + '</option>').appendTo("#lstPlataforma");
+			$('<option value="' + elemento.plataforma + '" >' +  elemento.plataforma + '</option>').appendTo("#lstPlataformaM");
 
 		});
 
@@ -85,43 +85,43 @@ function tratarCargaDesarrolladoras(oArrayDesarrolladoras, sStatus, oXHR){
 }
 
 function rellenaCombo2(oArrayDesarrolladoras){
-		$("#lstDesarrolladora").empty();
+		$("#lstDesarrolladoraM").empty();
 
 		$.each(oArrayDesarrolladoras, function( i , elemento){
 
-			$('<option value="' + elemento.idDesarrolladoras + '" >' +  elemento.Nombre + '</option>').appendTo("#lstDesarrolladora");
+			$('<option value="' + elemento.idDesarrolladoras + '" >' +  elemento.Nombre + '</option>').appendTo("#lstDesarrolladoraM");
 
 		});
 
 }
 
-function procesoAltaVideojuego(){
+function procesoModVideojuego(){
 
-	if (validarAltaVideojuego()){
+	if (validarModVideojuego()){
 
-		llamadaAjaxAltaVideojuego();
+		llamadaAjaxModVideojuego();
 	}
 
 }
 
 // Validacion
-function validarAltaVideojuego(){
+function validarModVideojuego(){
 
 	var sError="";
 	var bValido = true;
 
   var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
-  if(expreTitulo.test(frmGestionVideojuego.txtTitulo.value) == false){
+  if(expreTitulo.test(frmModVideojuego.txtTitulo.value) == false){
     bValido = false;
     sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
   var expreTitulo = /^[1-9][0-9]{1,}$/;
-  if(expreTitulo.test(frmGestionVideojuego.txtPrecio.value) == false){
+  if(expreTitulo.test(frmModVideojuego.txtPrecio.value) == false){
     bValido = false;
     sError+= "Campo Precio requiere de un precio mínimo de 1. ";
   }
-	if(frmGestionVideojuego.txtFechaSalida.value.length == 0){
+	if(frmModVideojuego.txtFechaSalida.value.length == 0){
 		sError+= "Campos fecha debe estar relleno";
 		bValido = false;
 	}
@@ -134,15 +134,16 @@ function validarAltaVideojuego(){
 }
 
 // Llamada ajax y tratamiento respuesta
-function llamadaAjaxAltaVideojuego(){
+function llamadaAjaxModVideojuego(){
 
 	//Creo un objeto literal Videojuego
 	var oVideojuego = {
-           idDesarrolladoraFK : frmGestionVideojuego.lstDesarrolladora.value,
-           Titulo : frmGestionVideojuego.txtTitulo.value,
-           Plataforma : frmGestionVideojuego.lstPlataforma.value ,
-				   FechaSalida : frmGestionVideojuego.txtFechaSalida.value,
-				   Precio : frmGestionVideojuego.txtPrecio.value.trim()
+           idVideojuego : frmModVideojuego.lstIdVideojuegoM.value,
+           idDesarrolladoraFK : frmModVideojuego.lstDesarrolladoraM.value,
+           Titulo : frmModVideojuego.txtTitulo.value,
+           Plataforma : frmModVideojuego.lstPlataformaM.value ,
+				   FechaSalida : frmModVideojuego.txtFechaSalida.value,
+				   Precio : frmModVideojuego.txtPrecio.value.trim()
 				 };
 
 	// Formateo de parametro POST
@@ -161,23 +162,23 @@ function llamadaAjaxAltaVideojuego(){
 /* LLAMADAS AJAX */
 function AjaxVideojuego(sURL,sParametroPOST){
 
-	oAjaxAltaVideojuego = objetoXHR();
+	oAjaxModVideojuego = objetoXHR();
 
-	oAjaxAltaVideojuego.open("POST",sURL,true);
+	oAjaxModVideojuego.open("POST",sURL,true);
 
 	// Para peticiones con metodo POST
-    oAjaxAltaVideojuego.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    oAjaxModVideojuego.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-	oAjaxAltaVideojuego.onreadystatechange = respuestaAltaVideojuego;
-//	oAjaxAltaProp.addEventListener("readystatechange",respuestaAltaProp,false);
+	oAjaxModVideojuego.onreadystatechange = respuestaModVideojuego;
+//	oAjaxModProp.addEventListener("readystatechange",respuestaModProp,false);
 
-	oAjaxAltaVideojuego.send(sParametroPOST);
+	oAjaxModVideojuego.send(sParametroPOST);
 }
 
-function respuestaAltaVideojuego(){
+function respuestaModVideojuego(){
 
-	if(oAjaxAltaVideojuego.readyState == 4 && oAjaxAltaVideojuego.status ==200)	{
-		var oArrayRespuesta = JSON.parse(oAjaxAltaVideojuego.responseText);
+	if(oAjaxModVideojuego.readyState == 4 && oAjaxModVideojuego.status ==200)	{
+		var oArrayRespuesta = JSON.parse(oAjaxModVideojuego.responseText);
 
 		if (oArrayRespuesta[0] == true){
 			alert(oArrayRespuesta[1]);
@@ -185,7 +186,7 @@ function respuestaAltaVideojuego(){
 		}
     else {
 			alert(oArrayRespuesta[1]);
-			$("#divfrmGestionVideojuego").dialog("close");
+			$("#divfrmModVideojuego").dialog("close");
 
 		}
 	}
