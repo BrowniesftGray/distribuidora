@@ -21,7 +21,7 @@ mysql_query("SET NAMES 'utf8'", $conexion);
 
 mysql_select_db($basedatos, $conexion) or die(mysql_error());
 
-$resultado = mysql_query("SELECT * FROM existencias WHERE", $conexion);
+$resultado = mysql_query("SELECT stock FROM existencias WHERE idTiendaFK='$oOperacion->idTiendaFK' AND idVideojuegoFK='$oOperacion->idVideojuegoFK'", $conexion);
 $numero_filas = mysql_num_rows($resultado);
 
 if ($numero_filas > 0) {
@@ -49,7 +49,7 @@ if ($numero_filas > 0) {
   }
 }
 else{
-  $mensaje="No hay existencias de los elementos seleccionados.";
+  $mensaje="No hay existencias del videojuego en la tienda seleccionada.";
   $error=true;
 }
 
