@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 	$("#mnuCompra").click(cargaAltaCompra);
 
-	//$("#mnuListadoOperaciones").click(cargaListadoOperaciones);
+	$("#mnuListadoOperacion").click(cargaListadoOperaciones);
 
 	$("#divMensajes").dialog( {
 		autoOpen:false,
@@ -212,6 +212,22 @@ function cargaListadoDesarrolladora(){
   else {
 
 		$("#divfrmListadoDesarrolladora").dialog("open");
+
+	}
+}
+
+function cargaListadoOperaciones(){
+
+	if( $("#frmListadoOperacion").size() == 0) {
+		$("#formularios").load("formularios/listadoOperaciones.html",
+    function(){
+						$.getScript("js/listadoOperaciones.js")
+              }
+					);
+	}
+  else {
+
+		$("#divfrmListadoOperacion").dialog("open");
 
 	}
 }

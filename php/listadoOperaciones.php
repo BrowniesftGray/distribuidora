@@ -21,7 +21,7 @@ mysql_query("SET NAMES 'utf8'", $conexion);
 mysql_select_db($basedatos, $conexion) or die(mysql_error());
 
 //SELECT operaciones.idOperacion, tiendas.idTiendas, videojuegos.idVideojuegos, operaciones.Unidades, operaciones.Tipo FROM ((operaciones INNER JOIN videojuegos ON operaciones.idVideojuegoFK = videojuegos.idVideojuegos) INNER JOIN tiendas ON operaciones.idTiendaFK = tiendas.idTiendas) WHERE IdVideojuegoFK='$sID';
-$sql = "SELECT * FROM operaciones WHERE IdVideojuegoFK='$sID'";
+$sql = "SELECT operaciones.idOperacion, tiendas.Nombre, videojuegos.Titulo, operaciones.Unidades, operaciones.Tipo FROM ((operaciones INNER JOIN videojuegos ON operaciones.idVideojuegoFK = videojuegos.idVideojuegos) INNER JOIN tiendas ON operaciones.idTiendaFK = tiendas.idTiendas) WHERE IdVideojuegoFK='$sID'";
 
 
 $resultados = mysql_query($sql, $conexion) or die(mysql_error());
@@ -30,17 +30,17 @@ $respuesta="<?xml version='1.0' encoding='UTF-8'?><operaciones>";
 while($fila=mysql_fetch_assoc($resultados)){
     $respuesta.="<operacion>";
         $respuesta.="<idOperacion>".$fila['idOperacion']."</idOperacion>";
-        $respuesta.="<idTienda>".$fila['idTiendaFK']."</idTienda>";
-        $respuesta.="<idVideojuego>".$fila['idVideojuegoFK']."</idVideojuego>";
+        $respuesta.="<nombre>".$fila['Nombre']."</nombre>";
+        $respuesta.="<titulo>".$fila['Titulo']."</titulo>";
 
-        if ($fila['Unidades'] == "C") {
-          $respuesta.="<unidades>Compra</unidades>";
+        if ($fila['Tipo'] == "C") {
+          $respuesta.="<tipo>Compra</tipo>";
         }
         else{
-          $respuesta.="<unidades>Venta</unidades>";
+          $respuesta.="<tipo>Venta</tipo>";
         }
 
-        $respuesta.="<tipo>".$fila['Tipo']."</tipo>";
+        $respuesta.="<unidades>".$fila['Unidades']."</unidades>";
     $respuesta.="</operacion>";
 }
 $respuesta.="</operaciones>";
