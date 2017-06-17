@@ -203,7 +203,7 @@ function cargaModDesarrolladora(){
 function cargaListadoDesarrolladora(){
 
 	if( $("#frmListadoDesarrolladora").size() == 0) {
-		$("#formularios").load("formularios/listadoDesarrolladora.html",
+		$("#formularios").load("formularios/listadoDesarrolladoras.html",
     function(){
 						$.getScript("js/listadoDesarrolladoras.js")
               }
