@@ -20,17 +20,17 @@ mysql_query("SET NAMES 'utf8'", $conexion);
 mysql_select_db($basedatos, $conexion) or die(mysql_error());
 
 
-$sql = "SELECT * FROM videojuegos";
+$sql = "SELECT videojuegos.idVideojuegos, videojuegos.Titulo, videojuegos.Plataforma, videojuegos.FechaSalida, videojuegos.Precio, desarrolladoras.Nombre FROM videojuegos INNER JOIN desarrolladoras ON videojuegos.idDesarrolladoraFK = desarrolladoras.idDesarrolladoras";
 
 
 $resultados = mysql_query($sql, $conexion) or die(mysql_error());
 
 $respuesta='<table id="listado" class="table table-striped" border="1">';
-$respuesta.='<tr><th>id de Videojuego</th><th>id de Desarrolladora</th><th>Titulo</th><th>Plataforma</th><th>FechaSalida</th><th>Precio</th></tr>';
+$respuesta.='<tr><th>id de Videojuego</th><th>Desarrolladora</th><th>Titulo</th><th>Plataforma</th><th>FechaSalida</th><th>Precio</th></tr>';
 while($fila=mysql_fetch_assoc($resultados)){
     $respuesta.="<tr>";
         $respuesta.="<td>".$fila['idVideojuegos']."</td>";
-        $respuesta.="<td>".$fila['idDesarrolladoraFK']."</td>";
+        $respuesta.="<td>".$fila['Nombre']."</td>";
         $respuesta.="<td>".$fila['Titulo']."</td>";
         $respuesta.="<td>".$fila['Plataforma']."</td>";
         $respuesta.="<td>".$fila['FechaSalida']."</td>";
