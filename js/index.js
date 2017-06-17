@@ -12,13 +12,13 @@ $(document).ready(function(){
 
 	$("#mnuModTienda").click(cargaModTienda);
 
-	$("#mnuListadoTienda").click(cargaListadoTienda);
+	//$("#mnuListadoTienda").click(cargaListadoTienda);
 
   $("#mnuAltaDesarrolladora").click(cargaAltaDesarrolladora);
 
 	$("#mnuModDesarrolladora").click(cargaModDesarrolladora);
 
-	$("#mnuListadoDesarrolladora").click(cargaListadoDesarrolladora);
+	//$("#mnuListadoDesarrolladora").click(cargaListadoDesarrolladora);
 
   $("#mnuAltaExistencia").click(cargaAltaExistencia);
 

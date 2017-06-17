@@ -85,11 +85,11 @@ function tratarCargaDesarrolladoras(oArrayDesarrolladoras, sStatus, oXHR){
 }
 
 function rellenaCombo2(oArrayDesarrolladoras){
-		$("#lstDesarrolladora").empty();
+		$("#lstDesarrolladoraV").empty();
 
 		$.each(oArrayDesarrolladoras, function( i , elemento){
 
-			$('<option value="' + elemento.idDesarrolladoras + '" >' +  elemento.Nombre + '</option>').appendTo("#lstDesarrolladora");
+			$('<option value="' + elemento.idDesarrolladoras + '" >' +  elemento.Nombre + '</option>').appendTo("#lstDesarrolladoraV");
 
 		});
 
@@ -138,7 +138,7 @@ function llamadaAjaxAltaVideojuego(){
 
 	//Creo un objeto literal Videojuego
 	var oVideojuego = {
-           idDesarrolladoraFK : frmGestionVideojuego.lstDesarrolladora.value,
+           idDesarrolladoraFK : frmGestionVideojuego.lstDesarrolladoraV.value,
            Titulo : frmGestionVideojuego.txtTitulo.value,
            Plataforma : frmGestionVideojuego.lstPlataforma.value ,
 				   FechaSalida : frmGestionVideojuego.txtFechaSalida.value,
