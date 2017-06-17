@@ -110,48 +110,20 @@ function llamadaAjaxModDesarrolladora(){
 	// Formateo de parametro POST
 	var sParametroPOST = "datos=" + JSON.stringify(oDesarrolladora);
 
-	// Codifico para envio
-	sParametroPOST = encodeURI(sParametroPOST);
-
-	// Script de envio
-	var sURL = encodeURI("php/ModDesarrolladora.php");
-
-	AjaxDesarrolladora(sURL,sParametroPOST);
+  $.post("php/modDesarrolladora.php",sParametroPOST,respuestaModDesarrolladora,'json');
 }
 
-
-/* LLAMADAS AJAX */
-function AjaxDesarrolladora(sURL,sParametroPOST){
-
-	oAjaxModDesarrolladora = objetoXHR();
-
-	oAjaxModDesarrolladora.open("POST",sURL,true);
-
-	// Para peticiones con metodo POST
-    oAjaxModDesarrolladora.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-	oAjaxModDesarrolladora.onreadystatechange = respuestaModDesarrolladora;
-//	oAjaxModProp.addEventListener("readystatechange",respuestaModProp,false);
-
-	oAjaxModDesarrolladora.send(sParametroPOST);
-}
-
-function respuestaModDesarrolladora(){
-
-	if(oAjaxModDesarrolladora.readyState == 4 && oAjaxModDesarrolladora.status ==200)	{
-		var oArrayRespuesta = JSON.parse(oAjaxModDesarrolladora.responseText);
-
+function respuestaModDesarrolladora(oRespuesta,sEstado,oXHR){
     $("#divMensajes").dialog("open");
 
-    if (oArrayRespuesta[0] == true){
+    if (oRespuesta[0] == true){
         $("#divMensajes").dialog("option","title","Error");
-        $("#pMensaje").text(oArrayRespuesta[1]);
+        $("#pMensaje").text(oRespuesta[1]);
     } else {
         $('#divfrmBajaMedico').dialog("close");
         $("#divMensajes").dialog("option","title","OK");
-        $("#pMensaje").text(oArrayRespuesta[1]);
+        $("#pMensaje").text(oRespuesta[1]);
     }
-	}
 }
 
 function objetoXHR() {
