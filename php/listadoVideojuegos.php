@@ -25,8 +25,8 @@ $sql = "SELECT * FROM videojuegos";
 
 $resultados = mysql_query($sql, $conexion) or die(mysql_error());
 
-$respuesta='<table id="listado" border="1">';
-$respuesta.='<tr><td>id de Videojuego</td><td>id de Desarrolladora</td><td>Titulo</td><td>Plataforma</td><td>FechaSalida</td><td>Precio</td></tr>';
+$respuesta='<table id="listado" class="table table-striped" border="1">';
+$respuesta.='<tr><th>id de Videojuego</th><th>id de Desarrolladora</th><th>Titulo</th><th>Plataforma</th><th>FechaSalida</th><th>Precio</th></tr>';
 while($fila=mysql_fetch_assoc($resultados)){
     $respuesta.="<tr>";
         $respuesta.="<td>".$fila['idVideojuegos']."</td>";
