@@ -155,7 +155,7 @@ function cargaModTienda(){
 function cargaListadoTienda(){
 
 	if( $("#frmListadoTienda").size() == 0) {
-		$("#formularios").load("formularios/listadoTienda.html",
+		$("#formularios").load("formularios/listadoTiendas.html",
     function(){
 						$.getScript("js/listadoTiendas.js")
               }
