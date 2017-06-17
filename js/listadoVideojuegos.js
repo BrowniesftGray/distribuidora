@@ -12,6 +12,11 @@ $("#divfrmListadoVideojuego").dialog({
     buttons: [{
         text: "Pedir listado",
         click: procesoListado
+    },{
+        text: "Cancelar",
+        click: function() {
+                 $(this).dialog("close");
+             }
     }]
 });
 

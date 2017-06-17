@@ -83,7 +83,7 @@ function cargaListadoVideojuego(){
 	}
   else {
 
-		$("#frmListadoVideojuego").dialog("open");
+		$("#divfrmListadoVideojuego").dialog("open");
 
 	}
 }
