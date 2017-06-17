@@ -1,9 +1,9 @@
 //@ sourceURL=altaCita.js
 
-$("#divfrmListadoOperacion").dialog({
+$("#divfrmListadoExistencia").dialog({
     autoOpen: true,  // Es el valor por defecto
     close: function () {
-        $("#frmListadoOperacion")[0].reset();
+        $("#frmListadoExistencia")[0].reset();
         //borrar la tabla si existe
         $("#listado").remove();
     },
@@ -23,39 +23,39 @@ $("#divfrmListadoOperacion").dialog({
     }]
 });
 
-cargaVideojuegos();
+cargaTiendas();
 
-// Cargar listbox de videojuegos
-function cargaVideojuegos(){
-	var oArrayVideojuegos = null;
+// Cargar listbox de tiendas
+function cargaTiendas(){
+	var oArrayTiendas = null;
 
 	// Existe en almacenamiento local
-	if(localStorage["videojuegos"] != null){
-		oArrayVideojuegos = JSON.parse(localStorage["videojuegos"]);
+	if(localStorage["tiendas"] != null){
+		oArrayTiendas = JSON.parse(localStorage["tiendas"]);
 
-		rellenaCombo(oArrayVideojuegos);
+		 rellenaComboTienda(oArrayTiendas);
 
 
 	} else {
 
-		$.get('php/getVideojuegos.php',null,tratarCargaVideojuegos,'json');
+		$.get('php/getTiendas.php',null,tratarCargaTiendas,'json');
 	}
 }
 
-function tratarCargaVideojuegos(oArrayVideojuegos, sStatus, oXHR){
+function tratarCargaTiendas(oArrayTiendas, sStatus, oXHR){
 
-		rellenaCombo(oArrayVideojuegos);
+		rellenaComboTienda(oArrayTiendas);
 
 		// Guardar en localStorage
-		localStorage["videojuegos"] = JSON.stringify(oArrayVideojuegos);
+		localStorage["tiendas"] = JSON.stringify(oArrayTiendas);
 }
 
-function rellenaCombo(oArrayVideojuegos){
-		$("#sID2").empty();
+function rellenaComboTienda(oArrayTiendas){
+		$("#sID").empty();
 
-		$.each(oArrayVideojuegos, function( i , elemento){
+		$.each(oArrayTiendas, function( i , elemento){
 
-			$('<option value="' + elemento.idVideojuegos + '" >' +  elemento.Titulo + '</option>').appendTo("#sID2");
+			$('<option value="' + elemento.idTiendas + '" >' +  elemento.Nombre + '</option>').appendTo("#sID");
 
 		});
 
@@ -65,9 +65,9 @@ function rellenaCombo(oArrayVideojuegos){
 var oAjaxListado = null;
 
 function procesoListado(){
-  var sID = frmListadoOperacion.sID.value;
+  var sID = frmListadoExistencia.sID.value;
   var sParametrosGET = encodeURI("sID="+sID);
-  var sURL = encodeURI("php/listadoOperaciones.php?");
+  var sURL = encodeURI("php/listadoExistencias.php?");
 
   llamadaAjaxListado(sURL, sParametrosGET);
 }
@@ -102,19 +102,18 @@ function procesaXML(oXML){
 
     var jqTabla = $('<table id="listado" class="table table-striped table-bordered">');
 
-    var oOperaciones = oXML.getElementsByTagName("operacion");
-    $('<tr><th>idOperacion</th><th>Tienda</th><th>Juego</th><th>Unidades</th><th>Tipo de Operacion</th></tr>').appendTo(jqTabla);
-    for(var i=0;i<oOperaciones.length;i++){
+    var oExistencias = oXML.getElementsByTagName("existencia");
+    $('<tr><th>idExistencia</th><th>Tienda</th><th>Juego</th><th>Stock</th></tr>').appendTo(jqTabla);
+    for(var i=0;i<oExistencias.length;i++){
         $('<tr>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('idOperacion')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('nombre')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('titulo')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('unidades')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('tipo')[0].textContent+'</td>' +
+            '<td>'+oExistencias[i].getElementsByTagName('idExistencia')[0].textContent+'</td>' +
+            '<td>'+oExistencias[i].getElementsByTagName('nombre')[0].textContent+'</td>' +
+            '<td>'+oExistencias[i].getElementsByTagName('titulo')[0].textContent+'</td>' +
+            '<td>'+oExistencias[i].getElementsByTagName('stock')[0].textContent+'</td>' +
            '</tr>').appendTo(jqTabla);
     }
 
-    jqTabla.appendTo("#divfrmListadoOperacion");
+    jqTabla.appendTo("#divfrmListadoExistencia");
 
 }
 

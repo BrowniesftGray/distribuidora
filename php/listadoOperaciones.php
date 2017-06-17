@@ -21,7 +21,7 @@ mysql_query("SET NAMES 'utf8'", $conexion);
 mysql_select_db($basedatos, $conexion) or die(mysql_error());
 
 //SELECT operaciones.idOperacion, tiendas.idTiendas, videojuegos.idVideojuegos, operaciones.Unidades, operaciones.Tipo FROM ((operaciones INNER JOIN videojuegos ON operaciones.idVideojuegoFK = videojuegos.idVideojuegos) INNER JOIN tiendas ON operaciones.idTiendaFK = tiendas.idTiendas) WHERE IdVideojuegoFK='$sID';
-$sql = "SELECT operaciones.idOperacion, tiendas.Nombre, videojuegos.Titulo, operaciones.Unidades, operaciones.Tipo FROM ((operaciones INNER JOIN videojuegos ON operaciones.idVideojuegoFK = videojuegos.idVideojuegos) INNER JOIN tiendas ON operaciones.idTiendaFK = tiendas.idTiendas) WHERE IdVideojuegoFK='$sID'";
+$sql = "SELECT operaciones.idOperacion, tiendas.Nombre, videojuegos.Titulo, operaciones.Unidades, operaciones.Tipo FROM ((operaciones INNER JOIN videojuegos ON operaciones.idVideojuegoFK = videojuegos.idVideojuegos) INNER JOIN tiendas ON operaciones.idTiendaFK = tiendas.idTiendas) WHERE IdVideojuegoFK=$sID";
 
 
 $resultados = mysql_query($sql, $conexion) or die(mysql_error());
@@ -44,6 +44,7 @@ while($fila=mysql_fetch_assoc($resultados)){
     $respuesta.="</operacion>";
 }
 $respuesta.="</operaciones>";
+
 echo $respuesta;
 
 mysql_close($conexion);

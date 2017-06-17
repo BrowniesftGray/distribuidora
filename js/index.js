@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   $("#mnuAltaExistencia").click(cargaAltaExistencia);
 
-	//$("#mnuListadoExistencia").click(cargaListadoExistencia);
+	$("#mnuListadoExistencia").click(cargaListadoExistencias);
 
 	$("#mnuVenta").click(cargaAltaVenta);
 
@@ -246,4 +246,20 @@ function cargaAltaExistencia(){
     $("#divfrmGestionExistencia").dialog("open");
 
   }
+}
+
+function cargaListadoExistencias(){
+
+	if( $("#frmListadoExistencia").size() == 0) {
+		$("#formularios").load("formularios/listadoExistencias.html",
+    function(){
+						$.getScript("js/listadoExistencias.js")
+              }
+					);
+	}
+  else {
+
+		$("#divfrmListadoExistencia").dialog("open");
+
+	}
 }

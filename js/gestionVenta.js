@@ -88,7 +88,7 @@ function tratarCargaVideojuegos(oArrayVideojuegos, sStatus, oXHR){
 }
 
 function rellenaCombo(oArrayVideojuegos){
-		$("#lstVideojuego").empty();
+		$("#lstVideojuegoV").empty();
 
 		$.each(oArrayVideojuegos, function( i , elemento){
 

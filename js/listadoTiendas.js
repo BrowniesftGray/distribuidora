@@ -60,7 +60,7 @@ function procesaXML(oXML){
 
     var jqTabla = $('<table id="listado" class="table table-striped table-bordered">');
 
-    var oTiendas = oXML.getElementsByTagName("tiendas");
+    var oTiendas = oXML.getElementsByTagName("tienda");
     $('<tr><th>idTienda</th><th>Nombre</th><th>Pais</th><th>Provincia</th><th>Direccion</th></tr>').appendTo(jqTabla);
     for(var i=0;i<oTiendas.length;i++){
         $('<tr>' +
