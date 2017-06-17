@@ -1,34 +1,28 @@
 $(document).ready(function(){
 
-	$("#menu").menu();
+	document.getElementById("mnuAltaVideojuego").addEventListener("click", cargaAltaVideojuego);
 
-	$("#mnuAltaVideojuego").click(cargaAltaVideojuego);
+	document.getElementById("mnuModVideojuego").addEventListener("click", cargaModVideojuego);
 
-	$("#mnuModVideojuego").click(cargaModVideojuego);
+	document.getElementById("mnuListadoVideojuego").addEventListener("click", cargaListadoVideojuego);
 
-	$("#mnuListadoVideojuego").click(cargaListadoVideojuego);
+	document.getElementById("mnuAltaTienda").addEventListener("click", cargaAltaTienda);
 
-  $("#mnuAltaTienda").click(cargaAltaTienda);
+	document.getElementById("mnuAltaDesarrolladora").addEventListener("click", cargaAltaDesarrolladora);
 
-	$("#mnuModTienda").click(cargaModTienda);
+	document.getElementById("mnuModDesarrolladora").addEventListener("click", cargaModDesarrolladora);
 
-	$("#mnuListadoTienda").click(cargaListadoTienda);
+	document.getElementById("mnuListadoDesarrolladora").addEventListener("click", cargaListadoDesarrolladora);
 
-  $("#mnuAltaDesarrolladora").click(cargaAltaDesarrolladora);
+	document.getElementById("mnuAltaExistencia").addEventListener("click", cargaAltaExistencia);
 
-	$("#mnuModDesarrolladora").click(cargaModDesarrolladora);
+	document.getElementById("mnuListadoExistencia").addEventListener("click", cargaListadoExistencias);
 
-	$("#mnuListadoDesarrolladora").click(cargaListadoDesarrolladora);
+	document.getElementById("mnuVenta").addEventListener("click", cargaAltaVenta);
 
-  $("#mnuAltaExistencia").click(cargaAltaExistencia);
+	document.getElementById("mnuCompra").addEventListener("click", cargaAltaCompra);
 
-	$("#mnuListadoExistencia").click(cargaListadoExistencias);
-
-	$("#mnuVenta").click(cargaAltaVenta);
-
-	$("#mnuCompra").click(cargaAltaCompra);
-
-	$("#mnuListadoOperacion").click(cargaListadoOperaciones);
+	document.getElementById("mnuListadoOperacion").addEventListener("click", cargaListadoOperaciones);
 
 	$("#divMensajes").dialog( {
 		autoOpen:false,

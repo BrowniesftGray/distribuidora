@@ -64,11 +64,11 @@ function procesaXML(oXML){
     $('<tr><th>idTienda</th><th>Nombre</th><th>Pais</th><th>Provincia</th><th>Direccion</th></tr>').appendTo(jqTabla);
     for(var i=0;i<oTiendas.length;i++){
         $('<tr>' +
-            '<td>'+oTiendas[i].getElementsByTagName('idTienda')[0].textContent+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('nombre')[0].textContent+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('pais')[0].textContent+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('provincia')[0].textContent+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('direccion')[0].textContent+'</td>' +
+            '<td>'+oTiendas[i].getElementsByTagName('idTienda')[0]+'</td>' +
+            '<td>'+oTiendas[i].getElementsByTagName('nombre')[0]+'</td>' +
+            '<td>'+oTiendas[i].getElementsByTagName('pais')[0]+'</td>' +
+            '<td>'+oTiendas[i].getElementsByTagName('provincia')[0]+'</td>' +
+            '<td>'+oTiendas[i].getElementsByTagName('direccion')[0].text()+'</td>' +
            '</tr>').appendTo(jqTabla);
     }
 

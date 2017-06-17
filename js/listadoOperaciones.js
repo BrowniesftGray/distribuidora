@@ -106,11 +106,11 @@ function procesaXML(oXML){
     $('<tr><th>idOperacion</th><th>Tienda</th><th>Juego</th><th>Unidades</th><th>Tipo de Operacion</th></tr>').appendTo(jqTabla);
     for(var i=0;i<oOperaciones.length;i++){
         $('<tr>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('idOperacion')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('nombre')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('titulo')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('unidades')[0].textContent+'</td>' +
-            '<td>'+oOperaciones[i].getElementsByTagName('tipo')[0].textContent+'</td>' +
+            '<td>'+oOperaciones[i].getElementsByTagName('idOperacion')[0].text()+'</td>' +
+            '<td>'+oOperaciones[i].getElementsByTagName('nombre')[0].text()+'</td>' +
+            '<td>'+oOperaciones[i].getElementsByTagName('titulo')[0].text()+'</td>' +
+            '<td>'+oOperaciones[i].getElementsByTagName('unidades')[0].text()+'</td>' +
+            '<td>'+oOperaciones[i].getElementsByTagName('tipo')[0].text()+'</td>' +
            '</tr>').appendTo(jqTabla);
     }
 
