@@ -141,15 +141,16 @@ function respuestaModDesarrolladora(){
 	if(oAjaxModDesarrolladora.readyState == 4 && oAjaxModDesarrolladora.status ==200)	{
 		var oArrayRespuesta = JSON.parse(oAjaxModDesarrolladora.responseText);
 
-		if (oArrayRespuesta[0] == true){
-			alert(oArrayRespuesta[1]);
+    $("#divMensajes").dialog("open");
 
-		}
-    else {
-			alert(oArrayRespuesta[1]);
-			$("#divfrmModDesarrolladora").dialog("close");
-
-		}
+    if (oArrayRespuesta[0] == true){
+        $("#divMensajes").dialog("option","title","Error");
+        $("#pMensaje").text(oArrayRespuesta[1]);
+    } else {
+        $('#divfrmBajaMedico').dialog("close");
+        $("#divMensajes").dialog("option","title","OK");
+        $("#pMensaje").text(oArrayRespuesta[1]);
+    }
 	}
 }
 

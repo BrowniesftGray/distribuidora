@@ -137,7 +137,6 @@ function llamadaAjaxAltaExistencia(){
 
 /* LLAMADAS AJAX */
 function AjaxExistencia(sURL,sParametroPOST){
-  alert("Hola");
 	oAjaxAltaExistencia = objetoXHR();
 
 	oAjaxAltaExistencia.open("POST",sURL,true);
@@ -157,15 +156,16 @@ function respuestaAltaExistencia(){
 	if(oAjaxAltaExistencia.readyState == 4 && oAjaxAltaExistencia.status ==200)	{
 		var oArrayRespuesta = JSON.parse(oAjaxAltaExistencia.responseText);
 
-		if (oArrayRespuesta[0] == true){
-			alert(oArrayRespuesta[1]);
+    $("#divMensajes").dialog("open");
 
-		}
-    else {
-			alert(oArrayRespuesta[1]);
-			$("#divfrmGestionExistencia").dialog("close");
-
-		}
+    if (oArrayRespuesta[0] == true){
+        $("#divMensajes").dialog("option","title","Error");
+        $("#pMensaje").text(oArrayRespuesta[1]);
+    } else {
+        $('#divfrmBajaMedico').dialog("close");
+        $("#divMensajes").dialog("option","title","OK");
+        $("#pMensaje").text(oArrayRespuesta[1]);
+    }
 	}
 }
 

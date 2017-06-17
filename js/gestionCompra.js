@@ -172,15 +172,16 @@ function respuestaAltaCompra(){
 	if(oAjaxAltaCompra.readyState == 4 && oAjaxAltaCompra.status ==200)	{
 		var oArrayRespuesta = JSON.parse(oAjaxAltaCompra.responseText);
 
-		if (oArrayRespuesta[0] == true){
-			alert(oArrayRespuesta[1]);
+    $("#divMensajes").dialog("open");
 
-		}
-    else {
-			alert(oArrayRespuesta[1]);
-			$("#divfrmCompra").dialog("close");
-
-		}
+    if (oArrayRespuesta[0] == true){
+        $("#divMensajes").dialog("option","title","Error");
+        $("#pMensaje").text(oArrayRespuesta[1]);
+    } else {
+        $('#divfrmBajaMedico').dialog("close");
+        $("#divMensajes").dialog("option","title","OK");
+        $("#pMensaje").text(oArrayRespuesta[1]);
+    }
 	}
 }
 
