@@ -20,7 +20,7 @@ mysql_query("SET NAMES 'utf8'", $conexion);
 
 mysql_select_db($basedatos, $conexion) or die(mysql_error());
 
-
+//SELECT existencias.idExistencias, tiendas.idTiendas, videojuegos.idVideojuegos, existencias.Stock FROM (( existencias INNER JOIN tiendas ON existencias.idTiendaFK = tiendas.idTiendas ) INNER JOIN videojuegos ON existencias.idVideojuegoFK = videojuegos.idVideojuegos) WHERE idTiendaFK='$sID';
 $sql = "SELECT * FROM existencias WHERE idTiendaFK='$sID'";
 
 
