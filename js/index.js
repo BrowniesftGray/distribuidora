@@ -35,12 +35,6 @@ $(document).ready(function(){
 		modal:true
 	});
 
-	$("#listado").dialog( {
-		autoOpen:false,
-		width:"auto",
-		height: "auto",
-		modal:true
-	});
 
 });
 
@@ -74,6 +68,22 @@ function cargaModVideojuego(){
   else {
 
 		$("#divfrmModVideojuego").dialog("open");
+
+	}
+}
+
+function cargaListadoVideojuego(){
+
+	if( $("#frmListadoVideojuego").size() == 0) {
+		$("#formularios").load("formularios/listadoVideojuego.html",
+    function(){
+						$.getScript("js/listadoVideojuegos.js")
+              }
+					);
+	}
+  else {
+
+		$("#frmListadoVideojuego").dialog("open");
 
 	}
 }

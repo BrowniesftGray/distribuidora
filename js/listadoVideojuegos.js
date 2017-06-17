@@ -2,38 +2,41 @@ $("#divfrmListadoVideojuego").dialog({
     autoOpen: true,  // Es el valor por defecto
     close: function () {
         $("#frmListadoVideojuego")[0].reset();
-        //borrar la tabla si existe
-        $("#listado").remove();
     },
     hide: "fold",
     show: "fold",
     height:"auto",
     width:"auto",
-    resizable:true,
+    modal: "yes",
+    resizable:false,
     buttons: [{
         text: "Pedir listado",
         click: procesoListado
-    }, {
-        text: "Aceptar",
-        click: function() {
-            $(this).dialog("close");
-        }
     }]
 });
+
 
 /* VARIABLES PARA AJAX */
 var oAjaxListado = null;
 
-function procesoListado(){
-        var sURL = encodeURI("php/listadoVideojuego.php?");
+function inicializa_xhr() {
+  if (window.XMLHttpRequest) {
+    return new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    return new ActiveXObject("Microsoft.XMLHTTP");
+  }
+}
 
-        llamadaAjaxListado(sURL);
+function procesoListado(){
+  var sURL = encodeURI("php/listadoVideojuegos.php?");
+
+  llamadaAjaxListado(sURL);
 }
 
 
 function llamadaAjaxListado(sURL){
 
-    oAjaxListado = objetoXHR();
+    oAjaxListado = inicializa_xhr();
 
     oAjaxListado.open("GET",sURL,true);
 
@@ -44,12 +47,11 @@ function llamadaAjaxListado(sURL){
 
 
 function respuestaListado(){
-
-  //borrar tabla si habia
   $("#listado").remove();
-
-  var jqTabla = oAjaxListado();
-
-  jqTabla.appendTo("#divfrmListadoVideojuego");
+  // TERCERO: procesar respuesta cuando llega
+	if (oAjaxListado.readyState == 4 && oAjaxListado.status == 200){
+     var jqTabla = oAjaxListado.responseText;
+		   $("#divfrmListadoVideojuego").append(jqTabla);
+	}
 
 }
