@@ -56,7 +56,7 @@ function respuestaListado(){
   // TERCERO: procesar respuesta cuando llega
 	if (oAjaxListado.readyState == 4 && oAjaxListado.status == 200){
      var jqTabla = oAjaxListado.responseText;
-		   $("#divfrmListadoVideojuego").append(jqTabla);
+		 $("#divfrmListadoVideojuego").append(jqTabla);
 	}
 
 }
