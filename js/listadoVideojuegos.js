@@ -34,7 +34,7 @@ function inicializa_xhr() {
 
 function procesoListado(){
   var sURL = encodeURI("php/listadoVideojuegos.php?");
-
+  
   llamadaAjaxListado(sURL);
 }
 

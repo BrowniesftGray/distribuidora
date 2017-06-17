@@ -38,6 +38,7 @@ while($fila=mysql_fetch_assoc($resultados)){
     $respuesta.="</tr>";
 }
 $respuesta.="</table>";
+
 echo $respuesta;
 
 mysql_close($conexion);
