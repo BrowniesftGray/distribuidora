@@ -58,21 +58,93 @@ function procesaXML(oXML){
     //borrar tabla si habia
     $("#listado").remove();
 
-    var jqTabla = $('<table id="listado" class="table table-striped table-bordered">');
+    //Objeto body
+  var eBody = document.getElementById("divfrmListadoTienda");
 
-    var oTiendas = oXML.getElementsByTagName("tienda");
-    $('<tr><th>idTienda</th><th>Nombre</th><th>Pais</th><th>Provincia</th><th>Direccion</th></tr>').appendTo(jqTabla);
-    for(var i=0;i<oTiendas.length;i++){
-        $('<tr>' +
-            '<td>'+oTiendas[i].getElementsByTagName('idTienda')[0]+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('nombre')[0]+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('pais')[0]+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('provincia')[0]+'</td>' +
-            '<td>'+oTiendas[i].getElementsByTagName('direccion')[0].text()+'</td>' +
-           '</tr>').appendTo(jqTabla);
+  //Elementos table y tbdoy
+  var eTabla = document.createElement("table");
+  var eTbody = document.createElement("tbody");
+
+  //La fila y cabecera inicial
+  for (var i = 0; i < 1; i++) {
+    //Elemento tr
+    var eFila = document.createElement("tr");
+
+    for (var j = 0; j < 1; j++) {
+      //Elemento th y nodo de texto con la info
+      var eTitulo = document.createElement("th");
+      var sTexto = document.createTextNode("idTienda");
+      var eTitulo1 = document.createElement("th");
+      var sTexto1 = document.createTextNode("Nombre");
+      var eTitulo2 = document.createElement("th");
+      var sTexto2 = document.createTextNode("País");
+      var eTitulo3 = document.createElement("th");
+      var sTexto3 = document.createTextNode("Provincia");
+      var eTitulo4 = document.createElement("th");
+      var sTexto4 = document.createTextNode("Direccion");
+      eTitulo.appendChild(sTexto);
+      eFila.appendChild(eTitulo);
+      eTitulo1.appendChild(sTexto1);
+      eFila.appendChild(eTitulo1);
+      eTitulo2.appendChild(sTexto2);
+      eFila.appendChild(eTitulo2);
+      eTitulo3.appendChild(sTexto3);
+      eFila.appendChild(eTitulo3);
+      eTitulo4.appendChild(sTexto4);
+      eFila.appendChild(eTitulo4);
     }
 
-    jqTabla.appendTo("#divfrmListadoTienda");
+    //Añadimos la primera fila al tbody
+    eTbody.appendChild(eFila);
+  }
+
+  //Filas restantes y celdas de cada una
+  $(oXML).find('tienda').each(function(){
+
+    var $desarrolladora = $(this);
+    var id = $desarrolladora.find('idTienda').text();
+    var nombre = $desarrolladora.find('nombre').text();
+    var pais = $desarrolladora.find('pais').text();
+    var provincia = $desarrolladora.find('provincia').text();
+    var direccion = $desarrolladora.find('direccion').text();
+    //Elemento tr
+
+    var eFila = document.createElement("tr");
+
+    var eTitulo = document.createElement("td");
+    var sTexto = document.createTextNode(id);
+    var eTitulo1 = document.createElement("td");
+    var sTexto1 = document.createTextNode(nombre);
+    var eTitulo2 = document.createElement("td");
+    var sTexto2 = document.createTextNode(pais);
+    var eTitulo3 = document.createElement("td");
+    var sTexto3 = document.createTextNode(provincia);
+    var eTitulo4 = document.createElement("td");
+    var sTexto4 = document.createTextNode(direccion);
+
+    eTitulo.appendChild(sTexto);
+    eFila.appendChild(eTitulo);
+    eTitulo1.appendChild(sTexto1);
+    eFila.appendChild(eTitulo1);
+    eTitulo2.appendChild(sTexto2);
+    eFila.appendChild(eTitulo2);
+    eTitulo3.appendChild(sTexto3);
+    eFila.appendChild(eTitulo3);
+    eTitulo4.appendChild(sTexto4);
+    eFila.appendChild(eTitulo4);
+    eTbody.appendChild(eFila);
+  });
+
+
+  //Añadimos el tbody al final debajo del elemento table
+  eTabla.appendChild(eTbody);
+
+  //Añadimos la tabla al body
+  eBody.appendChild(eTabla);
+
+  //Añadimos los atributos necesarios a la tabla, como el borde.
+  eTabla.setAttribute("class", "table table-striped table-bordered");
+  eTabla.setAttribute("id", "listado");
 
 }
 

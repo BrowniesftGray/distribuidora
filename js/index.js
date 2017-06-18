@@ -8,6 +8,10 @@ $(document).ready(function(){
 
 	document.getElementById("mnuAltaTienda").addEventListener("click", cargaAltaTienda);
 
+	document.getElementById("mnuModTienda").addEventListener("click", cargaModTienda);
+
+	document.getElementById("mnuListadoTienda").addEventListener("click", cargaListadoTienda);
+
 	document.getElementById("mnuAltaDesarrolladora").addEventListener("click", cargaAltaDesarrolladora);
 
 	document.getElementById("mnuModDesarrolladora").addEventListener("click", cargaModDesarrolladora);
