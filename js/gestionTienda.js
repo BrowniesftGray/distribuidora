@@ -73,48 +73,20 @@ function validarAltaTienda(){
 
 // Llamada ajax y tratamiento respuesta
 function llamadaAjaxAltaTienda(){
-
-	//Creo un objeto literal Tienda
-	var oTienda = {
-           Nombre     : frmGestionTienda.txtNombre.value,
-           Pais       : frmGestionTienda.txtPais.value,
-           Provincia  : frmGestionTienda.txtProvincia.value ,
-				   Direccion  : frmGestionTienda.txtDireccion.value
-				 };
-
-	// Formateo de parametro POST
-	var sParametroPOST = "datos=" + JSON.stringify(oTienda);
-
-	// Codifico para envio
-	sParametroPOST = encodeURI(sParametroPOST);
-
-	// Script de envio
-	var sURL = encodeURI("php/altaTienda.php");
-
-	AjaxTienda(sURL,sParametroPOST);
+  // $.ajax(url, opciones)
+	$.ajax({ url : "php/altaTienda.php",
+			 data: $("#frmGestionTienda").serialize(),
+			 async: true, // Valor por defecto
+			 dataType :'json',
+			 method: "POST",
+			 cache: false, // ya por defecto es false para POST
+			 success: respuestaAltaTienda,
+			 error :respuestaAltaTienda
+			 });
 }
 
+function respuestaAltaTienda(oArrayRespuesta){
 
-/* LLAMADAS AJAX */
-function AjaxTienda(sURL,sParametroPOST){
-
-	oAjaxAltaTienda = objetoXHR();
-
-	oAjaxAltaTienda.open("POST",sURL,true);
-
-	// Para peticiones con metodo POST
-    oAjaxAltaTienda.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-	oAjaxAltaTienda.onreadystatechange = respuestaAltaTienda;
-//	oAjaxAltaProp.addEventListener("readystatechange",respuestaAltaProp,false);
-
-	oAjaxAltaTienda.send(sParametroPOST);
-}
-
-function respuestaAltaTienda(){
-
-	if(oAjaxAltaTienda.readyState == 4 && oAjaxAltaTienda.status ==200)	{
-		var oArrayRespuesta = JSON.parse(oAjaxAltaTienda.responseText);
 
     $("#divMensajes").dialog("open");
 
@@ -126,7 +98,6 @@ function respuestaAltaTienda(){
         $("#divMensajes").dialog("option","title","OK");
         $("#pMensaje").text(oArrayRespuesta[1]);
     }
-	}
 }
 
 function objetoXHR() {

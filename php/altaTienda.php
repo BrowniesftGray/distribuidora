@@ -11,9 +11,10 @@ $basedatos = "koch";
 $usuario   = "root";
 $password  = "";
 
-$datos=$_REQUEST['datos'];
-
-$oTienda = json_decode($datos);
+$nombre = $_REQUEST['txtNombre'];
+$pais = $_REQUEST['txtPais'];
+$provincia = $_REQUEST['txtProvincia'];
+$direccion = $_REQUEST['txtDireccion'];
 
 // Abrir conexion con la BD
 $conexion = mysql_connect($servidor, $usuario, $password) or die(mysql_error());
@@ -24,7 +25,7 @@ mysql_select_db($basedatos, $conexion) or die(mysql_error());
 $mensaje='INSERTADO CON EXITO';
 $error = false;
 
-$sql = "insert into tiendas (Nombre, Pais, Provincia, Direccion) values ('$oTienda->Nombre','$oTienda->Pais','$oTienda->Provincia','$oTienda->Direccion')";
+$sql = "insert into tiendas (Nombre, Pais, Provincia, Direccion) values ('$nombre','$pais','$provincia','$direccion')";
 
 $resultados = @mysql_query($sql, $conexion) or die(mysql_error());
 
