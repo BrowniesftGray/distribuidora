@@ -42,7 +42,6 @@ function validarAltaTienda(){
   var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{5,45}$/
   if(expreTitulo.test(frmGestionTienda.txtNombre.value) == false){
     bValido = false;
-    alert(frmGestionTienda.txtNombre.value);
     sError+= "Campo Nombre requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
