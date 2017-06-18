@@ -6,9 +6,9 @@ $("#divfrmListadoVideojuego").dialog({
     hide: "fold",
     show: "fold",
     height:"auto",
-    width:"auto",
+    width:"750px",
     modal: "yes",
-    resizable:false,
+    resizable:true,
     buttons: [{
         text: "Pedir listado",
         click: procesoListado
@@ -34,7 +34,7 @@ function inicializa_xhr() {
 
 function procesoListado(){
   var sURL = encodeURI("php/listadoVideojuegos.php?");
-  
+
   llamadaAjaxListado(sURL);
 }
 

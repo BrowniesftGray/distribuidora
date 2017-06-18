@@ -1,16 +1,50 @@
 <div id="divfrmGestionVideojuego" title="Alta de Videojuego">
-  <form id="frmGestionVideojuego">
-    <label for="lstDesarrolladoraV">Desarrolladora</label>
-    <select name="lstDesarrolladoraV" id="lstDesarrolladoraV"></select><br>
-    <!--Combo de desarrolladoras, a elegir una-->
-    <label for="txtTitulo">Título</label>
-    <input type="text" name="txtTitulo" value=""><br>
-    <label for="txtPlataforma">Plataforma</label>
-    <select name="lstPlataforma" id="lstPlataforma"></select><br>
-    <!--Combo de plataformas, a elegir una-->
-    <label for="txtFechaSalida">Fecha de salida</label>
-    <input id="datepicker" type="text" name="txtFechaSalida" value=""><br>
-    <label for="txtPrecio">Precio</label>
-    <input type="text" name="txtPrecio" value=""><br>
-  </form>
+
+<form id="frmGestionVideojuego" class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Alta de Videojuego</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstDesarrolladoraV">Desarrolladora</label>
+  <div class="col-md-4">
+  <select name="lstDesarrolladoraV" id="lstDesarrolladoraV" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtTitulo">Título</label>
+  <div class="col-md-4">
+  <input id="txtTitulo" name="txtTitulo" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstPlataforma">Plataforma</label>
+  <div class="col-md-4">
+    <select name="lstPlataforma" id="lstPlataforma" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtFechaSalida">Fecha de Salida</label>
+  <div class="col-md-4">
+  <input id="datepicker" name="txtFechaSalida" type="text" class="form-control input-md">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtPrecio">Precio</label>
+  <div class="col-md-4">
+  <input id="txtPrecio" name="txtPrecio" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+</fieldset>
+</form>
 </div>

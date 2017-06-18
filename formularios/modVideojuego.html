@@ -1,19 +1,59 @@
 <div id="divfrmModVideojuego" title="Modificacion de Videojuego">
-  <form id="frmModVideojuego">
-    <label for="lstIdVideojuegoM">Id</label>
-    <select name="lstIdVideojuegoM" id="lstIdVideojuegoM"></select><br>
-    <!--Combo de desarrolladoras, a elegir una-->
-    <label for="lstDesarrolladoraM">Desarrolladora</label>
-    <select name="lstDesarrolladoraM" id="lstDesarrolladoraM"></select><br>
-    <!--Combo de desarrolladoras, a elegir una-->
-    <label for="txtTitulo">Título</label>
-    <input type="text" name="txtTitulo" value=""><br>
-    <label for="lstPlataformaM">Plataforma</label>
-    <select name="lstPlataformaM" id="lstPlataformaM"></select><br>
-    <!--Combo de plataformas, a elegir una-->
-    <label for="txtFechaSalida">Fecha de salida</label>
-    <input id="datepicker" type="text" name="txtFechaSalida" value=""><br>
-    <label for="txtPrecio">Precio</label>
-    <input type="text" name="txtPrecio" value=""><br>
-  </form>
+
+<form id="frmModVideojuego" class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Modificación de Videojuego</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstIdVideojuegoM">Select Basic</label>
+  <div class="col-md-4">
+    <select id="lstIdVideojuegoM" name="lstIdVideojuegoM" class="form-control">
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstDesarrolladoraM">Desarrolladora</label>
+  <div class="col-md-4">
+  <select name="lstDesarrolladoraM" id="lstDesarrolladoraM" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtTitulo">Título</label>
+  <div class="col-md-4">
+  <input id="txtTitulo" name="txtTitulo" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstPlataformaM">Plataforma</label>
+  <div class="col-md-4">
+    <select name="lstPlataformaM" id="lstPlataformaM" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtFechaSalida">Fecha de Salida</label>
+  <div class="col-md-4">
+  <input id="datepicker" name="txtFechaSalida" type="text" class="form-control input-md">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtPrecio">Precio</label>
+  <div class="col-md-4">
+  <input id="txtPrecio" name="txtPrecio" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+</fieldset>
+</form>
 </div>

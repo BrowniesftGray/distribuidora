@@ -6,9 +6,9 @@ $("#divfrmGestionDesarrolladora").dialog({
     hide: "fold",
     show: "fold",
     height:"auto",
-    width:"auto",
+    width:"750px",
     modal: "yes",
-    resizable:false,
+    resizable:true,
     buttons: [{
         text: "Añadir",
         click: procesoAltaDesarrolladora

@@ -1,12 +1,34 @@
-<div id="divfrmVenta">
-  <form id="frmVenta">
-    <label for="lstTiendaV">Tienda</label>
-    <select name="lstTiendaV" id="lstTiendaV"></select><br>
-    <!--Combo de tienda, a elegir una-->
-    <label for="lstVideojuegoV">Videojuego</label>
-    <select name="lstVideojuegoV" id="lstVideojuegoV"></select><br>
-    <!--Combo de videojuego, a elegir una-->
-    <label for="txtUnidades">Unidades</label>
-    <input type="text" name="txtUnidades" value=""><br>
-  </form>
+<div id="divfrmVenta" title="Venta">
+
+<form id="frmVenta" class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Venta</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstTiendaC">Tienda</label>
+  <div class="col-md-4">
+    <select name="lstTiendaC" id="lstTiendaC" class="form-control"></select>
+  </div>
 </div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstVideojuegoC">Videojuego</label>
+  <div class="col-md-4">
+  <select name="lstVideojuegoC" id="lstVideojuegoC" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtUnidades">Unidades</label>
+  <div class="col-md-4">
+  <input id="txtUnidades" name="txtUnidades" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+</fieldset>
+</form>

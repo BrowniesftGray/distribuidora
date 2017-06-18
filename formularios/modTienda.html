@@ -1,15 +1,51 @@
 <div id="divfrmModTienda" title="Modificación de Tienda">
-  <form id="frmModTienda">
-    <label for="lstTiendaT">Tienda</label>
-    <select name="lstTiendaT" id="lstTiendaT"></select><br>
-    <!--Combo de tienda, a elegir una-->
-    <label for="txtNombre">Nombre</label>
-    <input type="text" name="txtNombre" value=""><br>
-    <label for="txtPais">País</label>
-    <input type="text" name="txtPais" value=""><br>
-    <label for="txtProvincia">Provincia</label>
-    <input type="text" name="txtProvincia" value=""><br>
-    <label for="txtDireccion">Direccion</label>
-    <input type="text" name="txtDireccion" value=""><br>
-  </form>
+<form id="frmModTienda" class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Modificación de Tienda</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstTiendaT">Tienda</label>
+  <div class="col-md-4">
+    <select id="lstTiendaT" name="lstTiendaT" class="form-control">
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtNombre">Nombre</label>
+  <div class="col-md-4">
+  <input id="txtNombre" name="txtNombre" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtPais">Pais</label>
+  <div class="col-md-4">
+  <input id="txtPais" name="txtPais" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtProvincia">Provincia</label>
+  <div class="col-md-4">
+  <input id="txtProvincia" name="txtProvincia" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtDireccion">Direccion</label>
+  <div class="col-md-4">
+  <input id="txtDireccion" name="txtDireccion" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+</fieldset>
+</form>
 </div>

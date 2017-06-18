@@ -1,12 +1,37 @@
 <div id="divfrmGestionExistencia" title="Alta de existencia">
-  <form id="frmGestionExistencia">
-    <label for="lstTiendaEx">Tienda</label>
-    <select name="lstTiendaEx" id="lstTiendaEx"></select><br>
-    <!--Combo de tiendas, a elegir una-->
-    <label for="lstVideojuegoEx">Videojuego</label>
-    <select name="lstVideojuegoEx" id="lstVideojuegoEx"></select><br>
-    <!--Combo de videojuegos, a elegir uno-->
-    <label for="txtStock">Stock</label>
-    <input type="text" name="txtStock" value=""><br>
-  </form>
+
+<form  id="frmGestionExistencia" class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Alta de Existencia</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstTiendaEx">Tienda</label>
+  <div class="col-md-4">
+  <select id="lstTiendaEx" name="lstTiendaEx" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lstVideojuegoEx">Videojuego</label>
+  <div class="col-md-4">
+  <select id="lstVideojuegoEx" name="lstVideojuegoEx" class="form-control"></select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtStock">Stock</label>
+  <div class="col-md-4">
+  <input id="txtStock" name="txtStock" type="text" placeholder="placeholder" class="form-control input-md">
+  </div>
+</div>
+
+</div>
+
+</fieldset>
+</form>
 </div>

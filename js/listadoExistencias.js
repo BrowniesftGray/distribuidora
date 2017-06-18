@@ -10,7 +10,7 @@ $("#divfrmListadoExistencia").dialog({
     hide: "fold",
     show: "fold",
     height:"auto",
-    width:"auto",
+    width:"750px",
     resizable:true,
     buttons: [{
         text: "Pedir listado",
