@@ -39,26 +39,26 @@ function validarAltaTienda(){
 	var sError="";
 	var bValido = true;
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
   if(expreTitulo.test(frmGestionTienda.txtNombre.value) == false){
     bValido = false;
     alert(frmGestionTienda.txtNombre.value);
     sError+= "Campo Nombre requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
   if(expreTitulo.test(frmGestionTienda.txtPais.value) == false){
     bValido = false;
     sError+= "Campo pais requiere de un precio mínimo de 1. ";
   }
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
   if(expreTitulo.test(frmGestionTienda.txtProvincia.value) == false){
     bValido = false;
     sError+= "Campo Provincia requiere de un precio mínimo de 1. ";
   }
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,50}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
   if(expreTitulo.test(frmGestionTienda.txtDireccion.value) == false){
     bValido = false;
     sError+= "Campo direccion requiere de un precio mínimo de 1. ";

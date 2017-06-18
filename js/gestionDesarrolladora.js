@@ -34,19 +34,19 @@ function validarAltaDesarrolladora(){
 	var sError="";
 	var bValido = true;
 
-  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,45}$/;
   if(expreTitulo.test(frmGestionDesarrolladora.txtPais.value) == false){
     bValido = false;
     sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
-  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{3,50}$/;
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{3,45}$/;
   if(expreTitulo.test(frmGestionDesarrolladora.txtNombre.value) == false){
     bValido = false;
     sError+= "Campo Precio requiere de un precio mínimo de 1. ";
   }
 
-  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,45}$/;
   if(expreTitulo.test(frmGestionDesarrolladora.txtDireccion.value) == false){
     bValido = false;
     sError+= "Campo Precio requiere de un precio mínimo de 1. ";

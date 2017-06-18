@@ -78,7 +78,7 @@ function validarModDesarrolladora(){
     sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
-  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{3,50}$/;
+  var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{3,45}$/;
   if(expreTitulo.test(frmModDesarrolladora.txtNombre.value) == false){
     bValido = false;
     sError+= "Campo Precio requiere de un precio mínimo de 1. ";
