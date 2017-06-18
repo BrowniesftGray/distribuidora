@@ -117,11 +117,13 @@ function validarAltaCompra(){
   var expreTitulo = /^[0-9]{1,}$/;
   if(expreTitulo.test(frmCompra.txtUnidades.value) == false){
     bValido = false;
-    sError+= "Campo Unidades requiere de un precio mínimo de 1. ";
+    sError+= "Campo Unidades requiere de un mínimo de 1. ";
   }
 
 	if(bValido == false){
-		alert(sError); // A sustituir por el uso de un dialogo de mensajes
+		$("#divMensajes").dialog("open");
+    $("#divMensajes").dialog("option","title","Error");
+    $("#pMensaje").text(sError); // A sustituir por el uso de un dialogo de mensajes
 	}
 
 	return bValido;

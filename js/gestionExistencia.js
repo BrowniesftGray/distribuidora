@@ -108,7 +108,9 @@ function validarAltaExistencia(){
   }
 
 	if(bValido == false){
-		alert(sError); // A sustituir por el uso de un dialogo de mensajes
+		$("#divMensajes").dialog("open");
+$("#divMensajes").dialog("option","title","Error");
+$("#pMensaje").text(sError); // A sustituir por el uso de un dialogo de mensajes
 	}
 
 	return bValido;

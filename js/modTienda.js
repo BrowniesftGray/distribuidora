@@ -76,33 +76,34 @@ function validarModTienda(){
 	var sError="";
 	var bValido = true;
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{5,45}$/
   if(expreTitulo.test(frmModTienda.txtNombre.value) == false){
     bValido = false;
-    alert(frmModTienda.txtNombre.value);
     sError+= "Campo Nombre requiere de 5 letras mínimo y tiene un máximo de 50. ";
   }
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{5,45}$/
   if(expreTitulo.test(frmModTienda.txtPais.value) == false){
     bValido = false;
-    sError+= "Campo pais requiere de un precio mínimo de 1. ";
+    sError+= "Campo pais requiere de 5 letras mínimo y tiene un máximo de 45. ";
   }
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{5,45}$/
   if(expreTitulo.test(frmModTienda.txtProvincia.value) == false){
     bValido = false;
-    sError+= "Campo Provincia requiere de un precio mínimo de 1. ";
+    sError+= "Campo Provincia requiere de 5 letras mínimo y tiene un máximo de 45. ";
   }
 
-  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{3,45}$/
+  var expreTitulo = /^[a-zA-z\s\ñ\Ñ]{5,45}$/
   if(expreTitulo.test(frmModTienda.txtDireccion.value) == false){
     bValido = false;
-    sError+= "Campo direccion requiere de un precio mínimo de 1. ";
+    sError+= "Campo direccion requiere de 5 letras mínimo y tiene un máximo de 45. ";
   }
 
 	if(bValido == false){
-		alert(sError); // A sustituir por el uso de un dialogo de mensajes
+      $("#divMensajes").dialog("open");
+      $("#divMensajes").dialog("option","title","Error");
+      $("#pMensaje").text(sError);
 	}
 
 	return bValido;
@@ -110,7 +111,6 @@ function validarModTienda(){
 
 // Llamada ajax y tratamiento respuesta
 function llamadaAjaxModTienda(){
-  alert(frmModTienda.lstTiendaT.value);
 	//Creo un objeto literal Tienda
 	var oTienda = {
            idTiendas  : frmModTienda.lstTiendaT.value,

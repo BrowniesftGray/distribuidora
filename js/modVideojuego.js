@@ -150,13 +150,13 @@ function validarModVideojuego(){
   var expreTitulo = /^[0-9a-zA-Z\s\ñ\Ñ]{5,50}$/;
   if(expreTitulo.test(frmModVideojuego.txtTitulo.value) == false){
     bValido = false;
-    sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 50. ";
+    sError+= "Campo Título requiere de 5 letras mínimo y tiene un máximo de 45. ";
   }
 
   var expreTitulo = /^[1-9][0-9]{1,}$/;
   if(expreTitulo.test(frmModVideojuego.txtPrecio.value) == false){
     bValido = false;
-    sError+= "Campo Precio requiere de un precio mínimo de 1. ";
+    sError+= "Campo Precio requiere de un mínimo de 1. ";
   }
 	if(frmModVideojuego.txtFechaSalida.value.length == 0){
 		sError+= "Campos fecha debe estar relleno";
@@ -164,7 +164,9 @@ function validarModVideojuego(){
 	}
 
 	if(bValido == false){
-		alert(sError); // A sustituir por el uso de un dialogo de mensajes
+		$("#divMensajes").dialog("open");
+$("#divMensajes").dialog("option","title","Error");
+$("#pMensaje").text(sError); // A sustituir por el uso de un dialogo de mensajes
 	}
 
 	return bValido;
